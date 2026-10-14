@@ -1,0 +1,44 @@
+name: "Jules Guardian: Auto-Repair Build"
+
+on:
+  workflow_run:
+    workflows: ["Android CI"]
+    types:
+      - completed
+
+jobs:
+  jules-autofix:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 1. Descargamos los logs del error usando la CLI oficial de GitHub
+      - name: Fetch failed build logs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Descargando registros..."
+          gh run view ${{ github.event.workflow_run.id }} --log-failed > failed_logs.txt
+          # Extraemos las últimas 200 líneas para no saturar el contexto de la IA
+          tail -n 200 failed_logs.txt > debug_context.txt
+
+      # 2. Inyectamos de forma segura el texto multilínea al entorno de Linux
+      - name: Load logs into environment
+        run: |
+          echo "ERROR_LOGS<<EOF" >> $GITHUB_ENV
+          cat debug_context.txt >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      # 3. Invocamos a Jules. Él heredará automáticamente la variable $ERROR_LOGS del sistema operativo
+      - name: Jules call
+        uses: google-labs-code/jules-action@main
+        with:
+          jules_api_key: ${{ secrets.JULES_API_KEY }}
+          prompt: |
+            El flujo de trabajo de GitHub Actions para generar el APK de Android ha fallado en la compilación.
+            Revisa minuciosamente la configuración de Gradle, el archivo .github/workflows/android.yml, los problemas de dependencias o de herramientas del repositorio. 
+            Analiza la variable de entorno del sistema ERROR_LOGS (que ya está disponible en tu entorno de ejecución actual y contiene las líneas de la consola del fallo) como la fuente exacta para diagnosticar el problema. 
+            Parchea los archivos necesarios de forma autónoma para solucionar este error y asegurar la generación exitosa del APK.
