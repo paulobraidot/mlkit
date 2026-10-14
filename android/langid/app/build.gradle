@@ -1,10 +1,11 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace "com.google.mlkit.samples.nl.languageid"
     compileSdkVersion 34
     defaultConfig {
-        applicationId "com.google.mlkit.samples.nl.languageid"
+        // applicationId "com.google.mlkit.samples.nl.languageid"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
@@ -15,7 +16,6 @@ android {
         proguard {
             debuggable false
             minifyEnabled true
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro', 'proguard.cfg'
         }
@@ -35,12 +35,9 @@ android {
 }
 
 dependencies {
-    implementation project(':internal:chooserx')
+    implementation project(':chooserx')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.2.1'
 
     implementation 'com.google.mlkit:language-id:17.0.6'
-    // Or comment the dependency above and uncomment the dependency below to
-    // use unbundled model that depends on Google Play Services
-    // implementation 'com.google.android.gms:play-services-mlkit-language-id:17.0.0'
 }

@@ -1,11 +1,12 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 
 android {
+    namespace "com.google.mlkit.samples.codescanner"
     compileSdkVersion 31
     defaultConfig {
-        applicationId "com.google.mlkit.samples.codescanner"
+        // applicationId "com.google.mlkit.samples.codescanner"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
@@ -22,7 +23,6 @@ android {
         proguard {
             debuggable false
             minifyEnabled true
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro', 'proguard.cfg'
         }
@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    implementation project(':internal:chooserx')
+    implementation project(':chooserx')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.5.0'
 
