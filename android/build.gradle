@@ -1,0 +1,27 @@
+buildscript {
+    ext.kotlin_version = "1.9.0"
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        google()
+        maven { url 'https://androidx.dev/snapshots/builds/6787662/artifacts/repository/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        google()
+        maven { url 'https://androidx.dev/snapshots/builds/6787662/artifacts/repository/' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

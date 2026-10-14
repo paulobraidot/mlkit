@@ -23,19 +23,19 @@ jobs:
           cache: 'gradle'
 
       - name: Grant execute permission for gradlew
-        run: chmod +x android/vision-quickstart/gradlew
+        run: chmod +x android/gradlew
 
       - name: Build APK
         run: |
-          cd android/vision-quickstart
+          cd android
           ./gradlew assembleDebug --no-daemon
 
-      - name: Prepare MLKit-Vision.apk
+      - name: Prepare MLKit.apk
         run: |
-          cp android/vision-quickstart/app/build/outputs/apk/debug/vision-quickstart-debug.apk MLKit-Vision.apk
+          cp android/app/build/outputs/apk/debug/app-debug.apk MLKit.apk
 
-      - name: Upload MLKit-Vision APK
+      - name: Upload MLKit APK
         uses: actions/upload-artifact@v4
         with:
-          name: MLKit-Vision.apk
-          path: MLKit-Vision.apk
+          name: MLKit.apk
+          path: MLKit.apk

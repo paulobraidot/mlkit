@@ -1,12 +1,12 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
+    namespace "com.google.example.mlkit"
     compileSdkVersion 31
 
     defaultConfig {
-        applicationId "com.google.example.mlkit"
+        // applicationId "com.google.example.mlkit"
         minSdkVersion 19
         targetSdkVersion 31
         versionCode 1
