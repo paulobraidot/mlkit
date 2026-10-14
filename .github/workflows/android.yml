@@ -30,12 +30,12 @@ jobs:
           cd android/vision-quickstart
           ./gradlew assembleDebug --no-daemon
 
-      - name: Prepare MLKit.apk
+      - name: Prepare MLKit-Vision.apk
         run: |
-          cp android/vision-quickstart/app/build/outputs/apk/debug/vision-quickstart-debug.apk MLKit.apk
+          cp android/vision-quickstart/app/build/outputs/apk/debug/vision-quickstart-debug.apk MLKit-Vision.apk
 
-      - name: Upload MLKit APK
+      - name: Upload MLKit-Vision APK
         uses: actions/upload-artifact@v4
         with:
-          name: MLKit.apk
-          path: MLKit.apk
+          name: MLKit-Vision.apk
+          path: MLKit-Vision.apk
