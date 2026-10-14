@@ -32,8 +32,6 @@ dependencies {
     implementation 'androidx.exifinterface:exifinterface:1.3.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    // Add this dependency and multiDexEnabled = true in your defaultConfig to solve the error:
-    // Cannot fit requested classes in a single dex file
     implementation 'androidx.multidex:multidex:2.0.1'
 
     // ML Kit related dependencies
@@ -49,7 +47,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.0.1'
 
     // Text features
-    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.0'
+    implementation 'com.google.mlkit:text-recognition:16.0.1'
 
     // Image labeling
     implementation 'com.google.mlkit:image-labeling:17.0.7'
