@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.google.mlkit.app">
 
+    <uses-sdk
+        tools:overrideLibrary="
+          com.google.mlkit.genai.demo,
+          androidx.camera.camera2, androidx.camera.core,
+          androidx.camera.view, androidx.camera.lifecycle,
+          com.google.mlkit.vision.segmentation.subject" />
+
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
