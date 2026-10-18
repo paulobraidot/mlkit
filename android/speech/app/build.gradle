@@ -7,12 +7,12 @@ apply plugin: 'kotlin-android'
 
 android {
   namespace = "com.google.mlkit.genai.speech.demo"
-  compileSdk 35
+  compileSdk 34
 
   defaultConfig {
     // applicationId 'com.google.mlkit.genai.speech.demo'
     minSdk 26
-    targetSdk 35
+    targetSdk 34
     versionCode 1
     versionName '1.0'
 
