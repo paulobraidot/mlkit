@@ -1,0 +1,48 @@
+rootProject.name = 'MLKit'
+
+include ':app'
+
+include ':chooserx'
+project(':chooserx').projectDir = file('internal/chooserx')
+
+include ':android-snippets'
+project(':android-snippets').projectDir = file('android-snippets/app')
+
+include ':automl'
+project(':automl').projectDir = file('automl/app')
+
+include ':codescanner'
+project(':codescanner').projectDir = file('codescanner/app')
+
+include ':digitalink'
+project(':digitalink').projectDir = file('digitalink/app')
+
+include ':documentscanner'
+project(':documentscanner').projectDir = file('documentscanner/app')
+
+include ':entityextraction'
+project(':entityextraction').projectDir = file('entityextraction/app')
+
+include ':genai'
+project(':genai').projectDir = file('genai/app')
+
+include ':langid'
+project(':langid').projectDir = file('langid/app')
+
+include ':material-showcase'
+project(':material-showcase').projectDir = file('material-showcase/app')
+
+include ':smartreply'
+project(':smartreply').projectDir = file('smartreply/app')
+
+include ':speech'
+project(':speech').projectDir = file('speech/app')
+
+include ':translate'
+project(':translate').projectDir = file('translate/app')
+
+include ':translate-showcase'
+project(':translate-showcase').projectDir = file('translate-showcase/app')
+
+include ':vision-quickstart'
+project(':vision-quickstart').projectDir = file('vision-quickstart/app')
